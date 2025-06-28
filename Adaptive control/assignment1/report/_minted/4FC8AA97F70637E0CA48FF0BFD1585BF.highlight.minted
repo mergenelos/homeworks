@@ -1,0 +1,16 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{}\PYGZpc{} Evaluate transfer function}
+\PYG{n}{s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{tf}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{s\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{G}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mf}{0.72}\PYG{o}{*}\PYG{n}{s}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mf}{2.4}\PYG{o}{*}\PYG{n}{s}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{o}{*}\PYG{n}{s}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{11}\PYG{o}{*}\PYG{n}{s}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{6}\PYG{o}{*}\PYG{n}{s}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{} Plot step response}
+\PYG{n+nb}{figure}\PYG{p}{;}\PYG{n}{stepplot}\PYG{p}{(}\PYG{n}{G}\PYG{p}{)}\PYG{p}{;}\PYG{n+nb}{grid}\PYG{+w}{ }\PYG{n}{on}\PYG{p}{;}\PYG{n}{fontsize}\PYG{p}{(}\PYG{+w}{ }\PYG{l+m+mi}{24}\PYG{+w}{ }\PYG{p}{,}\PYG{l+s}{\PYGZdq{}points\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{} Get settling time of step response}
+\PYG{n}{s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{stepinfo}\PYG{p}{(}\PYG{n}{G}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{} Calculate the time interval for sampling}
+\PYG{n}{sampleTimeIntervals}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{s}\PYG{p}{.}\PYG{n}{SettlingTime}\PYG{o}{/}\PYG{l+m+mi}{50}\PYG{p}{;}
+\PYG{n+nb}{fprintf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Settling time:\PYGZpc{}f\PYGZbs{}nSample time:\PYGZpc{}.2fs\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{...}
+\PYG{n}{s}\PYG{p}{.}\PYG{n}{SettlingTime}\PYG{p}{,}\PYG{n+nb}{round}\PYG{p}{(}\PYG{n}{sampleTimeIntervals}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

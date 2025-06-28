@@ -1,0 +1,14 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{}\PYGZpc{} Define the sine wave input}
+\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{l+m+mf}{0.01}\PYG{p}{:}\PYG{l+m+mi}{100}\PYG{p}{;}
+\PYG{n}{u}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n+nb}{sin}\PYG{p}{(}\PYG{l+m+mf}{0.1}\PYG{o}{*}\PYG{n}{t}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{p}{[}\PYG{n}{y}\PYG{p}{,}\PYG{n}{t}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{lsim}\PYG{p}{(}\PYG{n}{G}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{n+nb}{figure}\PYG{p}{;}\PYG{n+nb}{subplot}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{)}\PYG{p}{;}\PYG{n}{fontsize}\PYG{p}{(}\PYG{+w}{ }\PYG{l+m+mi}{24}\PYG{+w}{ }\PYG{p}{,}\PYG{l+s}{\PYGZdq{}points\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Input Signal (2*Sine(0.1*t) Wave)\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nb}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Time (s)\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{n+nb}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Amplitude\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nb}{subplot}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{y}\PYG{p}{)}\PYG{p}{;}\PYG{n}{fontsize}\PYG{p}{(}\PYG{+w}{ }\PYG{l+m+mi}{24}\PYG{+w}{ }\PYG{p}{,}\PYG{l+s}{\PYGZdq{}points\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Output Signal\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{n+nb}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Time (s)\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{n+nb}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Amplitude\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nb}{fprintf}\PYG{p}{(}\PYG{p}{[}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{The sine rsponse for 2*sine(0.1*x) has min: \PYGZpc{}0.2f max: \PYGZpc{}0.2f peak2peak: \PYGZpc{}0.2f\PYGZbs{}n\PYGZsq{}}\PYG{p}{]}\PYG{p}{,}\PYG{n+nb}{min}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)}\PYG{p}{,}\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)}\PYG{p}{,}\PYG{n}{peak2peak}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

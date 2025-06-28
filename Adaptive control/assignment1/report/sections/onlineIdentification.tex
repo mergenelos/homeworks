@@ -1,0 +1,47 @@
+\section{Online identification}
+Recursive Least Squares (RLS) is an adaptive algorithm used for estimating the parameters of a system in real-time. RLS utilizes a covariance matrix ($P$) that reflects the confidence in the parameter estimates. The initial values of the covariance matrix and parameter estimates ($\theta$) can significantly affect the algorithm's performance. Despite its increased computational demands, Its ability to quickly adapt makes it valuable in various applications.
+
+$P$ is initilized as indicated in \autoref{eq:OIP}. The matrix $\phi$ is constructed based on \autoref{eq:OIPhi}. \autoref{eq:OIRemainingEqu} displays the remaining iterative equations requied to implement the RLS. \autoref{code:OIRLS} represent the equivalent implementation using The Matlab code.
+
+\begin{equation}
+		P_0 = 10^6 I, \text{ or } P_0 = (\psi^T \psi)^{-1}, \quad \text{size}(P) = n_u \times n_u
+	\label{eq:OIP}
+\end{equation}
+
+\begin{equation}
+	\begin{aligned}
+		\phi^T(k+1) = &[-y(k) \quad -y(k-1) \quad \dots \quad -y(k-n_a+1) \\
+	& u(k-d+1) \quad u(k-d-2) \quad \dots \quad u(k-d-n_b+1)] 
+\end{aligned}
+	\label{eq:OIPhi}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+	K(k+1) &= P(k)\phi(k+1) [\lambda + \phi^T(k+1) P(k) \phi(k+1)]^{-1} \\
+	\epsilon(k+1) &= y(k+1) - \phi^T(k+1) \hat{\theta}(k) \\
+	\hat{\theta}(k+1) &= \hat{\theta}(k) + K(k+1) \epsilon(k+1) \\
+	P(k+1) &= [I - K(k+1) \phi^T(k+1)] P(k) / \lambda \\
+	P(k+1) &= \frac{P(k+1) + P^T(k+1)}{2}
+\end{aligned}
+	\label{eq:OIRemainingEqu}
+\end{equation}
+
+\begin{code}
+	\begin{matlabcode}{firstnumber = 1}
+K{i}=P{i-1}*phiT(i,:)'*inv(lamda+phiT(i,:)*P{i-1}*phiT(i,:)');
+epslon(i)=y(i)-phiT(i,:)*theta_hat(:,i-1);
+theta_hat(:,i)=theta_hat(:,i-1)+K{i}*epslon(i);
+P{i}=(eye(length(K{i}*phiT(i,:)))-K{i}*phiT(i,:))*P{i-1}/lamda;
+P{i}=(P{i}+P{i}')/2;
+	\end{matlabcode}
+	\captionof{listing}{RLS implementation}
+	\label{code:OIRLS}
+\end{code}
+ 
+\import{onlineIdentificationSubsections/}{RLSIWithWhiteNoiseAndStep.tex}
+\import{onlineIdentificationSubsections/}{RLSIWithNoiseOnOutput.tex}
+\import{onlineIdentificationSubsections/}{RLSIEffectsOfInitialConditions.tex}
+\import{onlineIdentificationSubsections/}{RLSIColoredNoiseELS.tex}
+\import{onlineIdentificationSubsections/}{RLSISuddenParameterChange.tex}
+\import{onlineIdentificationSubsections/}{RLSIGradualParameterChange.tex}

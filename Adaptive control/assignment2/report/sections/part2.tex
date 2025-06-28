@@ -1,0 +1,66 @@
+\FloatBarrier
+\section{STR for minimum phase system}
+In this section, we implement a Self-Tuning Regulator (STR)-based controller for the system. We begin with an indirect STR approach without pole-zero cancellation, followed by an indirect STR implementation with pole-zero cancellation. The same steps are then applied to the direct STR approach. Next, we analyze the effects of noise and disturbance on the indirect STR. Finally, we examine the impact of parameter variations on the performance of the direct STR. Throughout this section, we utilize Recursive Least Squares (RLS) and Diophantine equation functions, as shown in \autoref{code:str01} and \autoref{code:str02}, respectively.
+
+\begin{code}
+	\begin{matlabcode}{firstnumber = 1}
+function [teta , P] = RLS(U , V ,Y, teta , P , Nv, lamda)
+	U = U(:)' ;
+	V = V(:)' ;
+	phi = [U , V]' ;
+	K = P*phi*(lamda+phi'*P*phi)^(-1) ;
+	P = ((eye(Nv) - K*phi')*P)/lamda ;
+	teta = teta + K*(Y - phi'*teta ) ;
+end
+	\end{matlabcode}
+	\captionof{listing}{RLS function}
+	\label{code:str01}
+\end{code}
+
+
+\begin{code}
+	\begin{matlabcode}{firstnumber = 1}
+function [R , S , Ac_result] = Diophantine(A , B , Ac)
+
+	n = numel(A)-1 ; % degree of A polynomial
+	m = numel(B)-1 ; % degree of B polynomial
+	B = [zeros(1,n-m) , B] ;
+	
+	E = zeros(2*n , 2*n) ;
+	
+	for i = 1:n
+	E(: , i) = [zeros(i-1 ,1) ; A' ; zeros(n-i , 1) ] ;  
+	E(: , i+n) = [zeros(i-1 ,1) ; B' ; zeros(n-i , 1) ] ;  
+	end
+	
+	nc = numel(Ac)-1 ;
+	Ac = [zeros(1,2*n-(nc+1)) , Ac] ;
+	
+	RS = E\ Ac' ;
+	
+	R = RS(1:n); 
+	S = RS(n+1:end); 
+	
+	% Ac_result = A*R+B*S ;
+	AR = conv(A,R) ;
+	BS = conv(B,S) ;
+	Ac_result = poly2sym(AR) + poly2sym(BS) ;
+	Ac_result = sym2poly(Ac_result);
+	
+	S = S(:)' ;
+	R = R(:)' ;
+
+end
+	\end{matlabcode}
+	\captionof{listing}{Diophantine function}
+	\label{code:str02}
+\end{code}
+
+\import{Part2Subsections/}{q1.tex}
+\import{Part2Subsections/}{q2.tex}
+\import{Part2Subsections/}{q3.tex}
+\import{Part2Subsections/}{q4.tex}
+\import{Part2Subsections/}{q5.tex}
+\import{Part2Subsections/}{q6.tex}
+\import{Part2Subsections/}{q7.tex}
+\import{Part2Subsections/}{q8.tex}

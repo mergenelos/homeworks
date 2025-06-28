@@ -1,0 +1,70 @@
+\FloatBarrier
+\subsection{Question 7}
+ \autoref{code:sstr71} implements the direct adaptive moving average controller. As shown in \autoref{fig:sstr71}, the system remains stable and, when actuated, returns to its equilibrium point at $0$. As shown in \autoref{fig:sstr72}, cummulative loss of the system is bounded. Estimated parameters are presented in \autoref{fig:sstr73}. The code for this section is available at \lstinline|assignment3/SSTR/SSTR_7.m|. 
+
+\begin{code}
+	\begin{matlabcode}{firstnumber = 1}
+%% Solve Diophantine equation
+d = 2;  % d0=1
+[F, G] = diophantine(A, C, d);
+
+%%  Define the MA controller 
+MA_controller = tf(conv(F,A), 1, Ts);
+
+%% Open loop
+G_ol = minreal(G_discrete * MA_controller);
+
+%%  Closed loop
+G_cl = feedback(G_ol, 1);
+A_true = [-2.5373   -0.1906    0.0497    0.1744    1.0341];
+B_true = [-2.5373   -0.1906    0.0497    0.1744    0.0341];
+
+%% Simulation settings
+na = length(A_true)-1; nb = length(B_true)-1;
+N = 31;             
+theta = zeros(nb + na, 1);  
+gamma = 0.01;          
+u = ones(1,N);
+y = zeros(1,N);
+y_ref = ones(1,N);
+phi = zeros(nb + na, 1);
+
+for k = 5:N
+e = y_ref(k) - y(k);
+phi = [-y(k-1); -y(k-2); -y(k-3); -y(k-4); ...
+u(k-1); u(k-2); u(k-3); u(k-4)];
+u(k) = theta' * phi;
+y(k) = -A_true(2)*y(k-1) - A_true(3)*y(k-2) - A_true(4)*y(k-3) + ...
+B_true(2)*u(k-1) + B_true(3)*u(k-2) + B_true(4)*u(k-3);
+
+theta = theta - gamma * e * phi;
+THETA(:,k) = theta;
+end
+	\end{matlabcode}
+	\captionof{listing}{Poles \& zeros with a mirrored zero}
+	\label{code:sstr71}
+\end{code}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{images/sstr71.png}
+	\caption{Output and control of direct adaptive implementation of moving average controller with mirrored zeros}
+	\label{fig:sstr71}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{images/sstr72.png}
+	\caption{Cummulative loss of direct adaptive implementation of moving average controller}
+	\label{fig:sstr72}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{images/sstr73.png}
+	\caption{Estimated parameters of direct adaptive implementation of moving average controller}
+	\label{fig:sstr73}
+\end{figure}
+
+
+

@@ -1,0 +1,35 @@
+%main loop
+for i = Nv+1:N
+	y(i) = -A(2:end)*y(i-1:-1:i-na)+B*(u(i-d0:-1:i-na)+vdist(i-(numel(A)-numel(B)):-1:i-(numel(A)-1))+ynoise(i-(numel(A)-numel(B)):-1:i-(numel(A)-1))) ;
+	Y = [-y(i-1) , -y(i-2), -y(i-3)];
+	U = [u(i-1)+vdist(i-1), u(i-2)+vdist(i-2), u(i-3)+vdist(i-3)] ;
+	
+	[teta , P] = RLS(Y ,U , y(i) , teta , P , Nv,lamda) ;
+	tetas(:,i)=teta;
+	
+	Aes = [1 teta(1:Nv/2)'] ;
+	Bes = teta(Nv/2+1:end)' ;
+	
+	if distrubance_fix
+		[Rbar , S] = Diophantine(conv(Aes,[1 -1]) , Bes , Ac)  ;
+		R = conv(Rbar , [1 -1]);
+		AcBm = conv(Ac , Bm) ;
+		AmB = conv(Am , Bes) ;
+		T = [0,0,sum(AcBm) / sum(AmB)] ;
+	else
+		[R , S] = Diophantine(Aes , Bes , Ac)  ;
+		AcBm = conv(Ac , Bm) ;
+		AmB = conv(Am , Bes) ;
+		T = [(sum(AcBm) / sum(AmB))*poly(A0)] ;
+		end
+	end
+	
+	u(i) = (-R(2:end)*u(i-1:-1:i-(numel(R)-1))+T*uc(i-(numel(R)-numel(T)):-1:i-(numel(R)-1))-S*y(i-(numel(R)-numel(S)):-1:i-(numel(R)-1)))/R(1) ;
+	if integral_fix
+		if u(i)<-vlimit
+			u(i)=-vlimit;
+		elseif u(i) > vlimit
+			u(i) = vlimit;
+		end
+	end
+end

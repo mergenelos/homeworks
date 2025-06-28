@@ -1,0 +1,25 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{fprintf}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Roots of continues transfer function:\PYGZbs{}n\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{continuesRoots}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{roots}\PYG{p}{(}\PYG{n}{G\PYGZus{}Original}\PYG{p}{.}\PYG{n}{den}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{1}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nb}{display}\PYG{p}{(}\PYG{n}{continuesRoots}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nb}{figure}\PYG{p}{;}
+\PYG{n}{pzplot}\PYG{p}{(}\PYG{n}{G\PYGZus{}Original}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{ee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{findobj}\PYG{p}{(}\PYG{n+nb}{gca}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{type\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{line\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n+nb}{i}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{ee}\PYG{p}{)}
+\PYG{+w}{	}\PYG{n+nb}{set}\PYG{p}{(}\PYG{n}{ee}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{)}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{markersize\PYGZsq{}}\PYG{p}{,}\PYG{l+m+mi}{24}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{set}\PYG{p}{(}\PYG{n}{ee}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{linewidth\PYGZsq{}}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{k}{end}
+\PYG{n+nb}{xlim}\PYG{p}{(}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Pole\PYGZhy{}Zero map of continues system\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{n}{fontsize}\PYG{p}{(}\PYG{+w}{ }\PYG{l+m+mi}{24}\PYG{+w}{ }\PYG{p}{,}\PYG{l+s}{\PYGZdq{}points\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{n+nb}{fprintf}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Roots of discrete transfer function:\PYGZbs{}n\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{discreteRoots}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{roots}\PYG{p}{(}\PYG{n}{Gz}\PYG{p}{.}\PYG{n}{den}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{1}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nb}{display}\PYG{p}{(}\PYG{n}{discreteRoots}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nb}{figure}\PYG{p}{;}
+\PYG{n}{pzplot}\PYG{p}{(}\PYG{n}{Gz}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{ee}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{findobj}\PYG{p}{(}\PYG{n+nb}{gca}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{type\PYGZsq{}}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{line\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n+nb}{i}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{ee}\PYG{p}{)}
+\PYG{+w}{	}\PYG{n+nb}{set}\PYG{p}{(}\PYG{n}{ee}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{)}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{markersize\PYGZsq{}}\PYG{p}{,}\PYG{l+m+mi}{24}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{set}\PYG{p}{(}\PYG{n}{ee}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{linewidth\PYGZsq{}}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{k}{end}
+\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Pole\PYGZhy{}Zero map of discrete system\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{n}{fontsize}\PYG{p}{(}\PYG{+w}{ }\PYG{l+m+mi}{24}\PYG{+w}{ }\PYG{p}{,}\PYG{l+s}{\PYGZdq{}points\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

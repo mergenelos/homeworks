@@ -1,0 +1,14 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{desired\PYGZus{}poles}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nb}{roots}\PYG{p}{(}\PYG{n}{Gz}\PYG{p}{.}\PYG{n}{num}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{1}\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{l+m+mf}{0.8}\PYG{p}{]}\PYG{p}{;}\PYG{+w}{  }\PYG{c}{\PYGZpc{} Cancel zeros with poles and add fast pole}
+
+\PYG{c}{\PYGZpc{} Compute state feedback gain}
+\PYG{n}{K}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{place}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{B}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{desired\PYGZus{}poles}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{} Create closed\PYGZhy{}loop system with precompensator}
+\PYG{n}{sys\PYGZus{}ol}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{ss}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{B}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{C}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{D}\PYG{p}{,}\PYG{n}{sampleTimeIntervals}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{sys\PYGZus{}cl}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{ss}\PYG{p}{(}\PYG{n}{A}\PYG{o}{\PYGZhy{}}\PYG{n}{B}\PYG{o}{*}\PYG{n}{K}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{B}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{C}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{D}\PYG{p}{,}\PYG{n}{sampleTimeIntervals}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{sys\PYGZus{}cl}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{minreal}\PYG{p}{(}\PYG{n}{sys\PYGZus{}cl}\PYG{p}{)}\PYG{p}{;}
+\PYG{c}{\PYGZpc{} Adjust DC gain for unity steady\PYGZhy{}state}
+\PYG{n}{kr}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{dcgain}\PYG{p}{(}\PYG{n}{sys\PYGZus{}cl}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{sys\PYGZus{}cl}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{ss}\PYG{p}{(}\PYG{n}{A}\PYG{o}{\PYGZhy{}}\PYG{n}{B}\PYG{o}{*}\PYG{n}{K}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{B}\PYG{o}{*}\PYG{n}{kr}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{C}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{D}\PYG{p}{,}\PYG{n}{sampleTimeIntervals}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

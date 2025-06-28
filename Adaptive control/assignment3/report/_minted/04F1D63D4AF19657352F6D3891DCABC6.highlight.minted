@@ -1,0 +1,36 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{run}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}SSTR\PYGZus{}0.m\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{}  Solve Diophantine equation}
+\PYG{p}{[}\PYG{n}{F}\PYG{p}{,}\PYG{n}{G}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{diophantine}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{C}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{}  Closed loop system}
+\PYG{n}{G\PYGZus{}ol}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{minreal}\PYG{p}{(}\PYG{n}{G\PYGZus{}discrete}\PYG{o}{*}\PYG{n}{tf}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n+nb}{conv}\PYG{p}{(}\PYG{n}{B}\PYG{p}{,}\PYG{n}{F}\PYG{p}{),}\PYG{n}{Ts}\PYG{p}{));}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{}  closed loop system}
+\PYG{n}{G\PYGZus{}cl}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{feedback}\PYG{p}{(}\PYG{n}{G\PYGZus{}ol}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{p}{[}\PYG{n}{B\PYGZus{}true}\PYG{p}{,}\PYG{n}{A\PYGZus{}true}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{tfdata}\PYG{p}{(}\PYG{n}{G\PYGZus{}cl}\PYG{p}{,}\PYG{l+s}{\PYGZsq{}v\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{} Simulation settings}
+\PYG{n}{na}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{A\PYGZus{}true}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{nb}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{B\PYGZus{}true}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{n}{N}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{31}\PYG{p}{;}
+\PYG{n}{theta}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{zeros}\PYG{p}{(}\PYG{n}{nb}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{na}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n+nb}{gamma}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.01}\PYG{p}{;}
+
+\PYG{n}{u}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ones}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{N}\PYG{p}{);}
+\PYG{n}{y}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{zeros}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{N}\PYG{p}{);}
+\PYG{n}{y\PYGZus{}ref}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{ones}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{N}\PYG{p}{);}
+\PYG{n}{phi}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{zeros}\PYG{p}{(}\PYG{n}{nb}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{na}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{} Simulation loop}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{:}\PYG{n}{N}
+\PYG{n}{e}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{y\PYGZus{}ref}\PYG{p}{(}\PYG{n}{k}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{y}\PYG{p}{(}\PYG{n}{k}\PYG{p}{);}
+\PYG{n}{phi}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{y}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{y}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{);}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{y}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{);}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{)];}
+\PYG{n}{u}\PYG{p}{(}\PYG{n}{k}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{theta}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{phi}\PYG{p}{;}
+\PYG{n}{y}\PYG{p}{(}\PYG{n}{k}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{A\PYGZus{}true}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{*}\PYG{n}{y}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{A\PYGZus{}true}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{o}{*}\PYG{n}{y}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{A\PYGZus{}true}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{o}{*}\PYG{n}{y}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{k}{...}
+\PYG{n}{B\PYGZus{}true}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{*}\PYG{n}{u}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{B\PYGZus{}true}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{o}{*}\PYG{n}{u}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{B\PYGZus{}true}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{o}{*}\PYG{n}{u}\PYG{p}{(}\PYG{n}{k}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{);}
+
+\PYG{n}{theta}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{theta}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nb}{gamma}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{e}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{phi}\PYG{p}{;}
+\PYG{n}{THETA}\PYG{p}{(:,}\PYG{n}{k}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{theta}\PYG{p}{;}
+\PYG{k}{end}
+\end{MintedVerbatim}

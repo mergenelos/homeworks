@@ -1,0 +1,32 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{k}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} 4x settling time}
+\PYG{n}{Tp\PYGZus{}min}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{Ts}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} Minimum recommended period between pulses}
+
+\PYG{n+nb}{fprintf}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Minimum Recommended Pulse Period (Tp): \PYGZpc{}.2f seconds\PYGZbs{}n\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Tp\PYGZus{}min}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{}Simulation Time}
+\PYG{n}{Tsim}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{20}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{Tp\PYGZus{}min}\PYG{p}{;}
+\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{n}{sampleTimeIntervals}\PYG{p}{:}\PYG{n}{Tsim}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{}Pulse Train 1 (Respecting Settling Time)}
+\PYG{n}{u1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{gensig}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{square\PYGZsq{}}\PYG{+w}{ }\PYG{p}{,}\PYG{n}{Tp\PYGZus{}min}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Tsim}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Gz}\PYG{p}{.}\PYG{n}{Ts}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{u2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{gensig}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{square\PYGZsq{}}\PYG{+w}{ }\PYG{p}{,}\PYG{n}{Tp\PYGZus{}min}\PYG{o}{/}\PYG{n}{k}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Tsim}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Gz}\PYG{p}{.}\PYG{n}{Ts}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{n}{y1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{lsim}\PYG{p}{(}\PYG{n}{G\PYGZus{}discrete}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{y2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{lsim}\PYG{p}{(}\PYG{n}{G\PYGZus{}discrete}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{k}{if}\PYG{+w}{ }\PYG{n}{drawPlot}
+\PYG{+w}{	}\PYG{n+nb}{figure}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{subplot}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{r\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{y1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{b\PYGZhy{}\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{n}{fontsize}\PYG{p}{(}\PYG{+w}{ }\PYG{l+m+mi}{24}\PYG{+w}{ }\PYG{p}{,}\PYG{l+s}{\PYGZdq{}points\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{title}\PYG{p}{(}\PYG{n+nb}{sprintf}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Response with fpulse Allows Settling \PYGZsq{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Time (s)\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Amplitude\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Input Pulse\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{System Output\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{grid}\PYG{+w}{ }\PYG{l+s}{on}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{ylim}\PYG{p}{(}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.1}\PYG{+w}{ }\PYG{l+m+mf}{4.5}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{	}\PYG{n+nb}{subplot}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{r\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{y2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{b\PYGZhy{}\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{n}{fontsize}\PYG{p}{(}\PYG{+w}{ }\PYG{l+m+mi}{24}\PYG{+w}{ }\PYG{p}{,}\PYG{l+s}{\PYGZdq{}points\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{title}\PYG{p}{(}\PYG{n+nb}{sprintf}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Response with fpulse Too Fast\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Time (s)\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Amplitude\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nb}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Input Pulse\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{System Output\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{grid}\PYG{+w}{ }\PYG{l+s}{on}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{ylim}\PYG{p}{(}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.1}\PYG{+w}{ }\PYG{l+m+mf}{4.5}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{end}
+\end{MintedVerbatim}

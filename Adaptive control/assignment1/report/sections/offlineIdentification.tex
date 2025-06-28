@@ -1,0 +1,88 @@
+\FloatBarrier
+\section{Offline identification}
+A general representation of a discrete transfer function is given in \autoref{eq:OFIGeneralTransferFunction}. Matrices $A$ and $B$ contain the parameters of the system which shoud be identified using LS method. For identifying a system based on its input and outputs, Using LS method, we require to calculate the matrix $\theta$ which contains the identified system parameters. Furthermore, $y(k)$ is given in \autoref{eq:OFIOutput}.
+
+\begin{equation}
+	\begin{aligned}
+		G(z^{-1})& = \frac{z^{-d}B(z^{-1})}{A(z^{-1})}, \\
+		B(z^{-1}) &= b_0 + b_1 z^{-1} + \dots + b_{nb} z^{-n_b}, \\
+		A(z^{-1}) &= 1 + a_1 z^{-1} + \dots + a_{na} z^{-n_a} 
+	\end{aligned}
+	\label{eq:OFIGeneralTransferFunction}
+\end{equation}
+
+\begin{equation}
+	\begin{gathered}
+		y(k) = \phi^T(k) \hat{\theta}(k-1) 
+	\end{gathered}
+	\label{eq:OFIOutput}
+\end{equation}
+
+As indicated in \autoref{eq:OFIOutput} the evaluation of $y(k)$ is dependent on $\phi$ and $\theta$. 
+Using the LS method, $\phi$ is constructed based on the input and output data as shown in \autoref{eq:OFIPhi}.  
+
+\begin{equation}
+	\begin{aligned}
+		\phi^T(k) = &[-y(k-1) \quad -y(k-2) \quad \dots \quad -y(k-n_a) \\
+		& u(k-d) \quad u(k-d-1) \quad \dots \quad u(k-d-n_b)] 
+	\end{aligned}
+	\label{eq:OFIPhi}
+\end{equation}
+
+\noindent A simplified version of \autoref{eq:OFIPhi} is possible. The simplified $\phi$ is shown in \autoref{eq:OFIPhiSimplified}.
+
+\begin{equation}
+	\begin{aligned}
+		\phi^T(k+1) = &[-y(k) \quad -y(k-1) \quad \dots \quad -y(k-n_a+1) \\
+		\quad & u(k-d+1) \quad u(k-d-2+1) \quad \dots \quad u(k-d-n_b+1)] \\
+	\end{aligned}
+	\label{eq:OFIPhiSimplified}
+\end{equation}
+
+\noindent Given \autoref{eq:OFIOutput} and \autoref{eq:OFIPhiSimplified}, we can calculate the $\theta$ as in \autoref{eq:OFITheta}.
+
+\begin{equation}
+	\begin{gathered}
+		\hat{\theta}(k+1) = \hat{\theta}(k) + \frac{\phi(k+1)}{\phi^T(k+1)\phi(k+1)} [y(k+1) - \phi^T(k+1)\hat{\theta}(k)]
+	\end{gathered}
+	\label{eq:OFITheta}
+\end{equation}
+
+To make the \autoref{eq:OFITheta} more readable, We represent the number of sampled data using $N$. For a set of input-output data, the minimum value for $N$ is calculated in \autoref{eq:OFINumberofSamples}. $Y$ is defined as in \autoref{eq:OFIY}. 
+
+\begin{equation}
+	\begin{aligned}
+		\text{number of unknowns} &= n_u = n_a + n_b + 1 \\
+		n &= \text{Max}(n_a, n_b + d) \\
+		\text{number of sampled data} &= N > n_u + n - 1
+	\end{aligned}
+	\label{eq:OFINumberofSamples}
+\end{equation}
+
+\begin{equation}
+	\begin{gathered}
+		Y = [y(k) \quad y(k+1) \quad \dots \quad y(N)]^T \\
+	\end{gathered}
+	\label{eq:OFIY}
+\end{equation}
+
+\noindent We can further simplify the equations for $\theta$ as displayed in \autoref{eq:OFIThetaSimplified}.
+
+\begin{equation}
+	\begin{gathered}
+		\hat{\theta} = (\phi^T \phi)^{-1} \phi^T Y
+	\end{gathered}
+	\label{eq:OFIThetaSimplified}
+\end{equation}
+
+We use the MSE\footnote{Mean Squared Error} as shown in \autoref{eq:OFIMeanSquareError} to have an understanding of how well our predicted parameters and the resulting system output matches the responses of the actual system.
+
+\begin{equation}
+	MSE = \frac{1}{N} \sum_{i=1}^{N} (Y(i) - \phi(i)^T*\theta)^2
+	\label{eq:OFIMeanSquareError}
+\end{equation}
+
+\import{offlineIdentificationSubsections/}{LSIdentificationWithStepAndWhiteNoiseInput.tex}
+\import{offlineIdentificationSubsections/}{LSIdentificationWithWhiteNoiseOnOutput.tex}
+\import{offlineIdentificationSubsections/}{LSIdentificationWithColoredNoiseOnOutput.tex}
+\import{offlineIdentificationSubsections/}{underAndOverParameterization.tex}

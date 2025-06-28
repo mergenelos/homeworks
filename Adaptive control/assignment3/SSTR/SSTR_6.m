@@ -1,0 +1,46 @@
+run('SSTR_0.m');
+
+%%  Original unstable system
+G_s = 3*(0.4*s-1)*(s-0.8)/((3*s+1)^2*(s-1));
+
+%%  Discretize the system
+G_z = c2d(G_s, Ts, 'zoh');
+[B, A] = tfdata(G_z, 'v');
+B(1) = [];  
+
+%%  Solve Diophantine equation for d = 2 
+d = 2;  % d0=1
+[F, G] = diophantine(A, C, d);
+
+%%  Define the MA controller 
+MA_controller = tf(conv(F,A), B, Ts);
+
+%%  Define the open loop system
+G_ol = minreal(G_z * MA_controller);
+
+%%  Closed-loop system
+G_cl = feedback(G_ol, 1);
+
+%%  Plot results
+T = (0:Ts:30*Ts)';
+[y,t] = impulse(G_cl,T);
+figure, hold on, grid on;
+subplot(2,1,1) ;
+plot(t,y);
+xlabel('Time (s)')
+ylabel('Output')
+fontsize( 24 ,"points");
+
+[u,t] = impulse(1/G_cl,T);
+subplot(2,1,2) ;
+plot(t,u);
+xlabel('Time (s)')
+ylabel('Control signal')
+fontsize( 24 ,"points");
+
+cumLoss = 1/length(t)*cumsum((y-0).^2);
+figure, hold on, grid on;
+plot(t,cumLoss);
+xlabel('Time (s)')
+ylabel('Cummulative loss')
+fontsize( 24 ,"points");

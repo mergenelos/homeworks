@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{}\PYGZpc{} Import Simulink model}
+\PYG{n}{sim}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}LS1\PYGZus{}1\PYGZus{}Stp.slx\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{}\PYGZpc{} Generate white noise with variance of 2}
+\PYG{n}{desired\PYGZus{}variance}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{;}
+\PYG{n}{signal\PYGZus{}length}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{3334}\PYG{p}{;}
+\PYG{n}{standard\PYGZus{}noise}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{randn}\PYG{p}{(}\PYG{n}{signal\PYGZus{}length}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{current\PYGZus{}variance}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{var}\PYG{p}{(}\PYG{n}{standard\PYGZus{}noise}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{scaling\PYGZus{}factor}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{sqrt}\PYG{p}{(}\PYG{n}{desired\PYGZus{}variance}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{current\PYGZus{}variance}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{white\PYGZus{}noise}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{standard\PYGZus{}noise}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{scaling\PYGZus{}factor}\PYG{p}{;}
+\PYG{n}{actual\PYGZus{}variance}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{var}\PYG{p}{(}\PYG{n}{white\PYGZus{}noise}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nb}{fprintf}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Desired variance of input white noise: \PYGZpc{}.2f\PYGZbs{}n\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{desired\PYGZus{}variance}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nb}{fprintf}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Actual variance of input white noise: \PYGZpc{}.2f\PYGZbs{}n\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{actual\PYGZus{}variance}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

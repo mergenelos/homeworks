@@ -1,0 +1,16 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{List of Figures}{ii}{Doc-Start}%
+\contentsline {section}{List of Program Codes}{iv}{Doc-Start}%
+\contentsline {section}{\numberline {0}Prerequisites}{1}{section.0}%
+\contentsline {section}{\numberline {1}Offline identification}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}LS identification with step \& white noise input}{5}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}LS identification with white noise on output}{9}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}LS identification with colored noise on output}{12}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Under \& Over parameterization}{14}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Online identification}{16}{section.2}%
+\contentsline {subsection}{\numberline {2.1}RLS identification with step \& white noise inputs}{17}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}RLS identification with noise on output}{20}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Effects of initial conditions}{23}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}RLS \& ELS identification with Colored noise on output}{26}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}RLS identification with sudden parameter change}{29}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}RLS identification with gradual parameter change}{32}{subsection.2.6}%

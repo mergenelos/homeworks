@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{s}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{tf}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{s\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{G\PYGZus{}Original}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{o}{*}\PYG{p}{(}\PYG{p}{(}\PYG{l+m+mf}{0.7}\PYG{o}{*}\PYG{n}{s}\PYG{p}{)}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{s}\PYG{o}{+}\PYG{l+m+mf}{0.8}\PYG{p}{)}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{p}{(}\PYG{p}{(}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{s}\PYG{p}{)}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{s}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{if}\PYG{+w}{ }\PYG{n}{drawPlot}
+\PYG{+w}{	}\PYG{n+nb}{figure}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{step}\PYG{p}{(}\PYG{n}{G\PYGZus{}Original}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{b\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Step response\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{Step Response of Original System\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{fontsize}\PYG{p}{(}\PYG{+w}{ }\PYG{l+m+mi}{24}\PYG{+w}{ }\PYG{p}{,}\PYG{l+s}{\PYGZdq{}points\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{end}
+\end{MintedVerbatim}

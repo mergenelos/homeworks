@@ -1,0 +1,38 @@
+\babel@toc {english}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Original system step response}}{2}{figure.caption.2}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Discrete \& contineus stable system step response}}{2}{figure.caption.4}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Pulse input and response}}{4}{figure.caption.6}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Continues system poles \& zeros}}{6}{figure.caption.8}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Discrete system poles \& zeros}}{6}{figure.caption.9}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Step response of closed system without cancellation}}{8}{figure.caption.11}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Pulse response of closed system without cancellation}}{8}{figure.caption.12}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Step response of closed system with cancellation}}{10}{figure.caption.14}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Pulse response of closed system with cancellation}}{10}{figure.caption.15}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Step response of system with mirrored zero}}{12}{figure.caption.17}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Pulse response of closed system without cancellation}}{12}{figure.caption.18}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Pulse response of system with mirrored zero}}{13}{figure.caption.19}%
+\contentsline {figure}{\numberline {13}{\ignorespaces System response without zero cancelling Indirect STR }}{16}{figure.caption.23}%
+\contentsline {figure}{\numberline {14}{\ignorespaces System parameters in indirect STR without zero cancellation}}{16}{figure.caption.24}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Indirect STR ystem response with zero cancellation}}{18}{figure.caption.26}%
+\contentsline {figure}{\numberline {16}{\ignorespaces System parameters in indirect STR with zero cancellation}}{18}{figure.caption.27}%
+\contentsline {figure}{\numberline {17}{\ignorespaces System response without zero cancelling direct STR }}{22}{figure.caption.30}%
+\contentsline {figure}{\numberline {18}{\ignorespaces System parameters in direct STR without zero cancellation}}{22}{figure.caption.31}%
+\contentsline {figure}{\numberline {19}{\ignorespaces direct STR ystem response with zero cancellation}}{24}{figure.caption.32}%
+\contentsline {figure}{\numberline {20}{\ignorespaces System parameters in direct STR with zero cancellation}}{24}{figure.caption.33}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Over-parameterized system response}}{26}{figure.caption.34}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Parameter changes of over-parameterized system}}{26}{figure.caption.35}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Smaller P values with random teta}}{28}{figure.caption.37}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Bigger P values with random teta}}{28}{figure.caption.38}%
+\contentsline {figure}{\numberline {25}{\ignorespaces P = 1e6*eye(Nv) and zero initial values for teta}}{29}{figure.caption.39}%
+\contentsline {figure}{\numberline {26}{\ignorespaces P = 1e6*eye(Nv) and more accurate initial values for teta}}{29}{figure.caption.40}%
+\contentsline {figure}{\numberline {27}{\ignorespaces System output with white noise}}{31}{figure.caption.42}%
+\contentsline {figure}{\numberline {28}{\ignorespaces System parameters with white noise}}{31}{figure.caption.43}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Compensating for system with white nois}}{32}{figure.caption.44}%
+\contentsline {figure}{\numberline {30}{\ignorespaces System output with colored noise}}{32}{figure.caption.45}%
+\contentsline {figure}{\numberline {31}{\ignorespaces System parameters with colored noise }}{33}{figure.caption.46}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Compensating for system with colored noise }}{33}{figure.caption.47}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Output with disturbance}}{36}{figure.caption.50}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Fixing the disturbance}}{36}{figure.caption.51}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Integral windup}}{37}{figure.caption.52}%
+\contentsline {figure}{\numberline {36}{\ignorespaces Integral windup fix}}{37}{figure.caption.53}%
+\contentsline {figure}{\numberline {37}{\ignorespaces System parameters with integral windup fix}}{38}{figure.caption.54}%

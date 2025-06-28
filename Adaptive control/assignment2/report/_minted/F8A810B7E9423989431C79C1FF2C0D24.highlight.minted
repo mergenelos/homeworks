@@ -1,0 +1,24 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{} Convert to state\PYGZhy{}space representation}
+\PYG{p}{[}\PYG{n}{A}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{B}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{C}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{D}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{ssdata}\PYG{p}{(}\PYG{n}{Gz}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{} Check controllability}
+\PYG{n}{Co}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{ctrb}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{B}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{if}\PYG{+w}{ }\PYG{n+nb}{rank}\PYG{p}{(}\PYG{n}{Co}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n+nb}{size}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{System is controllable\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{else}
+\PYG{n+nb}{error}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{System is not controllable\PYGZsq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{end}
+
+\PYG{c}{\PYGZpc{} Choose desired poles to improve settling time}
+\PYG{n}{desired\PYGZus{}poles}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mf}{0.4}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.8}\PYG{p}{]}\PYG{p}{;}
+
+\PYG{n}{K}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{place}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{B}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{desired\PYGZus{}poles}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{n}{sys\PYGZus{}cl\PYGZus{}no\PYGZus{}kr}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{ss}\PYG{p}{(}\PYG{n}{A}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{B}\PYG{o}{*}\PYG{n}{K}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{B}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{C}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{D}\PYG{p}{,}\PYG{n}{sampleTimeIntervals}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{kr}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{dcgain}\PYG{p}{(}\PYG{n}{sys\PYGZus{}cl\PYGZus{}no\PYGZus{}kr}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{} Create closed\PYGZhy{}loop system with precompensator}
+\PYG{n}{B\PYGZus{}cl}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{B}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{kr}\PYG{p}{;}
+\PYG{n}{sys\PYGZus{}cl}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{ss}\PYG{p}{(}\PYG{n}{A}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{B}\PYG{o}{*}\PYG{n}{K}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{B\PYGZus{}cl}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{C}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{D}\PYG{p}{,}\PYG{n}{sampleTimeIntervals}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

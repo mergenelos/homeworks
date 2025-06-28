@@ -1,0 +1,16 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{run}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}SSTR\PYGZus{}0.m\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{}  Solve Diophantine equation for d = 2}
+\PYG{n}{d}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{;}\PYG{+w}{  }\PYG{c}{\PYGZpc{} d0=1}
+\PYG{p}{[}\PYG{n}{F}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{G}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{diophantine}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{C}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{d}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{}  Define the MA controller}
+\PYG{n}{MA\PYGZus{}controller}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{tf}\PYG{p}{(}\PYG{n+nb}{conv}\PYG{p}{(}\PYG{n}{F}\PYG{p}{,}\PYG{n}{A}\PYG{p}{),}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Ts}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{}  Define the open loop system}
+\PYG{n}{G\PYGZus{}ol}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{minreal}\PYG{p}{(}\PYG{n}{G\PYGZus{}discrete}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{MA\PYGZus{}controller}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{}  Closed\PYGZhy{}loop system}
+\PYG{n}{G\PYGZus{}cl}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{feedback}\PYG{p}{(}\PYG{n}{G\PYGZus{}ol}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{);}
+\end{MintedVerbatim}

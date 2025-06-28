@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{function}\PYG{+w}{ }\PYG{n+nf}{[teta , P] = RLS}\PYG{p}{(}U , V ,Y, teta , P , Nv, lamda\PYG{p}{)}
+\PYG{+w}{	}\PYG{n}{U}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{U}\PYG{p}{(}\PYG{p}{:}\PYG{p}{)}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{V}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{V}\PYG{p}{(}\PYG{p}{:}\PYG{p}{)}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{phi}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{U}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n}{V}\PYG{p}{]}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{K}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{P}\PYG{o}{*}\PYG{n}{phi}\PYG{o}{*}\PYG{p}{(}\PYG{n}{lamda}\PYG{o}{+}\PYG{n}{phi}\PYG{o}{\PYGZsq{}}\PYG{o}{*}\PYG{n}{P}\PYG{o}{*}\PYG{n}{phi}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{P}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{p}{(}\PYG{n+nb}{eye}\PYG{p}{(}\PYG{n}{Nv}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{K}\PYG{o}{*}\PYG{n}{phi}\PYG{o}{\PYGZsq{}}\PYG{p}{)}\PYG{o}{*}\PYG{n}{P}\PYG{p}{)}\PYG{o}{/}\PYG{n}{lamda}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{teta}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{teta}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{K}\PYG{o}{*}\PYG{p}{(}\PYG{n}{Y}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{phi}\PYG{o}{\PYGZsq{}}\PYG{o}{*}\PYG{n}{teta}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{k}{end}
+\end{MintedVerbatim}

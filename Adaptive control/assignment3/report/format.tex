@@ -1,0 +1,64 @@
+% Adjust spacing after the chapter title
+\titlespacing*{\chapter}{0cm}{-2.0cm}{0.50cm}
+\titlespacing*{\section}{0cm}{0.50cm}{0.25cm}
+
+% Indent 
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex}
+
+% Start sectioning from this number
+\setcounter{section}{0}
+
+% Setup cationing
+\captionsetup{format = hang, margin = 10pt, font = small, labelfont = bf}
+\setlength{\abovecaptionskip}{0pt plus 1pt minus 1pt} 
+\setlength{\belowcaptionskip}{10pt plus 1pt minus 1pt} 
+
+% General setup
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\setlength{\parindent}{15pt} 
+\SetupFloatingEnvironment{listing}{listname=List of Program Codes}
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Code}
+\lstset{breaklines=true} 
+\newdateformat{monthyeardate}{\monthname[\THEMONTH], \THEYEAR}
+\renewcommand\theFancyVerbLine{\footnotesize\arabic{FancyVerbLine}}
+
+% --- Theorems, lemma, corollary, postulate, definition ---
+% \numberwithin{equation}{section}
+
+\newtcbtheorem[]{problem}{Problem}%
+    {enhanced,
+    boxsep=10pt,
+    arc = 0mm,
+    colback = black!5, %white,
+    colbacktitle = black!5,
+    coltitle = black,
+    boxrule = 0pt,
+    frame hidden,
+    borderline  = {0.0mm}{0.0mm}{black},
+    fonttitle = \bfseries\sffamily,
+    breakable,
+    before skip = 3ex,
+    after skip = 3ex
+}{problem}
+
+% \tcbuselibrary{skins}
+\newtcblisting{matlabcode}[1]{
+	listing engine=minted,
+	minted style=emacs,
+	minted language=matlab,
+	minted options={fontsize=\normalsize,breaklines,breakanywhere,autogobble,linenos,numbersep=5mm,#1},
+	colback=bg,colframe=black!5,listing only,
+	enlarge top by=5pt,
+	left=10mm,
+	enhanced,
+	arc = 0 pt,
+	boxrule = 0pt,
+	borderline  = {0.0mm}{0.0mm}{black},
+	overlay={\begin{tcbclipinterior}\fill[bg!200] (frame.south west)
+	rectangle ([xshift=7mm]frame.north west);\end{tcbclipinterior}}
+}
+
+% Inline matlab code
+\newmintinline{matlab}{}

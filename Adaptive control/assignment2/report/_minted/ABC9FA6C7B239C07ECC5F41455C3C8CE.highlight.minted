@@ -1,0 +1,26 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{}\PYGZpc{} Parameters}
+\PYG{n}{distrubance}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} set to 1 for step disturbance}
+\PYG{n}{distrubance\PYGZus{}fix}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} set to 1 to fix system}
+\PYG{n}{integral\PYGZus{}fix}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} set 1 to limit u}
+\PYG{n}{vlimit}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} limit of u}
+\PYG{+w}{		}\PYG{p}{.}\PYG{+w}{ }\PYG{p}{.}\PYG{+w}{ }\PYG{p}{.}
+\PYG{k}{if}\PYG{+w}{ }\PYG{n}{distrubance}
+\PYG{+w}{	}\PYG{n}{e}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{o}{*}\PYG{n+nb}{randn}\PYG{p}{(}\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{t}\PYG{p}{)}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{k}{for}\PYG{+w}{ }\PYG{n+nb}{i}\PYG{+w}{ }\PYG{p}{=}\PYG{l+m+mi}{50}\PYG{p}{:}\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{e}\PYG{p}{)}
+\PYG{+w}{		}\PYG{n}{e}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{)}\PYG{p}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{	}\PYG{k}{end}
+\PYG{+w}{	}\PYG{n}{sys\PYGZus{}dist}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{tf}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Gz}\PYG{p}{.}\PYG{n}{Ts}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{vdist}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{lsim}\PYG{p}{(}\PYG{n}{sys\PYGZus{}dist}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n}{e}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{k}{else}
+\PYG{+w}{	}\PYG{n}{vdist}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{zeros}\PYG{p}{(}\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{t}\PYG{p}{)}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{end}
+\PYG{p}{.}\PYG{+w}{ }\PYG{p}{.}\PYG{+w}{ }\PYG{p}{.}
+\PYG{k}{if}\PYG{+w}{ }\PYG{n}{distrubance\PYGZus{}fix}
+\PYG{+w}{	}\PYG{n}{A0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{;}
+\PYG{k}{else}
+\PYG{+w}{	}\PYG{n}{A0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{	}\PYG{c}{\PYGZpc{}A0 = q\PYGZca{}2 \PYGZhy{}0,5 q +0.06}
+\PYG{k}{end}
+\PYG{p}{.}\PYG{+w}{ }\PYG{p}{.}\PYG{+w}{ }\PYG{p}{.}
+\end{MintedVerbatim}

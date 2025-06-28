@@ -1,0 +1,25 @@
+	%% Gradually change parameters
+	a2 = ones(signal_length);a2=a2(1:end,1:2);
+	a3 = ones(signal_length);a3=a3(1:end,1:2);a3(:,2)=1/6*a3(1:end,2);
+	
+	% Calculate the step size for a linear change
+	%final_value-initial_value/sample_period
+	step_size_a2 = (0.3 - 1) / 50;
+	step_size_a3 = ((0.3*(1/6)) - 1/6) / 50;
+	
+	for n=1:length(a2(1:end,1))
+	a2(n,1) = 0.3*n;
+	a3(n,1) = 0.3*n;
+	end
+	
+	% change a2 form 50 to 101
+	for n=50:101
+	a2(n,2) = a2(n,2)+step_size_a2*(n-50);
+	end
+	a2(101:end,2) = a2(101,2);
+	
+	% change a3 form 200 to 251
+	for n=200:251
+	a3(n,2) = a3(n,2)+step_size_a3*(n-200);
+	end
+	a3(251:end,2) = a3(251,2);

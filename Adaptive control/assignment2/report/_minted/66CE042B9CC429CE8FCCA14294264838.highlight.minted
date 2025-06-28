@@ -1,0 +1,43 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cancel}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} 0 no zero cancel, 1 all zero cancel}
+\PYG{c}{\PYGZpc{}\PYGZpc{} generate Data}
+\PYG{n}{uc}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{u1}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{lamda}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{n}{system\PYGZus{}dig}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Gz}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{}system}
+\PYG{p}{[}\PYG{n}{B}\PYG{+w}{  }\PYG{p}{,}\PYG{n}{A}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{tfdata}\PYG{p}{(}\PYG{n}{system\PYGZus{}dig}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{A}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{cell2mat}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{B}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{cell2mat}\PYG{p}{(}\PYG{n}{B}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{ }\PYG{n}{B}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{B}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{:}\PYG{k}{end}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{c}{\PYGZpc{} reference model}
+\PYG{n}{Am}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.7}\PYG{+w}{ }\PYG{l+m+mf}{0.92}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.16}\PYG{p}{]}\PYG{p}{;}
+\PYG{k}{if}\PYG{+w}{ }\PYG{n}{cancel}
+\PYG{+w}{	}\PYG{n}{sys\PYGZus{}ref\PYGZus{}dig}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{tf}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{Am}\PYG{p}{)}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}\PYG{n}{Am}\PYG{p}{,}\PYG{n}{Gz}\PYG{p}{.}\PYG{n}{Ts}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{A0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nb}{roots}\PYG{p}{(}\PYG{n}{B}\PYG{p}{)}\PYG{o}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{;}
+\PYG{k}{else}
+\PYG{+w}{	}\PYG{n+nb}{beta}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{Am}\PYG{p}{)}\PYG{o}{/}\PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{B}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{sys\PYGZus{}ref\PYGZus{}dig}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{tf}\PYG{p}{(}\PYG{n+nb}{beta}\PYG{o}{*}\PYG{n}{B}\PYG{p}{,}\PYG{n}{Am}\PYG{p}{,}\PYG{n}{Gz}\PYG{p}{.}\PYG{n}{Ts}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{	}\PYG{n}{A0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{;}
+\PYG{k}{end}
+\PYG{p}{[}\PYG{n}{Bm}\PYG{+w}{  }\PYG{p}{,}\PYG{n}{Am}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{tfdata}\PYG{p}{(}\PYG{n}{sys\PYGZus{}ref\PYGZus{}dig}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{Am}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{cell2mat}\PYG{p}{(}\PYG{n}{Am}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{Bm}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{cell2mat}\PYG{p}{(}\PYG{n}{Bm}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{ }\PYG{n}{Bm}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Bm}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{:}\PYG{k}{end}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{y\PYGZus{}ref}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{lsim}\PYG{p}{(}\PYG{n}{sys\PYGZus{}ref\PYGZus{}dig}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uc}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{c}{\PYGZpc{}\PYGZpc{} initial parameters}
+\PYG{n}{n}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{numel}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{m}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{numel}\PYG{p}{(}\PYG{n}{B}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{d0}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{n}{m}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{A0Am}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{conv}\PYG{p}{(}\PYG{n}{A0}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Am}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{Na0am}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{numel}\PYG{p}{(}\PYG{n}{A0Am}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{L}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Na0am}\PYG{o}{\PYGZhy{}}\PYG{n}{d0}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{Nv}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{p}{(}\PYG{n}{L}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{teta}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{zeros}\PYG{p}{(}\PYG{n}{Nv}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{P}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1e4}\PYG{o}{*}\PYG{n+nb}{eye}\PYG{p}{(}\PYG{n}{Nv}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{u}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{randn}\PYG{p}{(}\PYG{n}{Nv}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{  }\PYG{c}{\PYGZpc{} initial effort control}
+\PYG{n}{y}\PYG{+w}{  }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{randn}\PYG{p}{(}\PYG{n}{Nv}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{  }\PYG{c}{\PYGZpc{} initial output}
+\PYG{n}{uf}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{randn}\PYG{p}{(}\PYG{n}{Nv}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{  }\PYG{c}{\PYGZpc{} initial filtered effort control}
+\PYG{n}{yf}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{randn}\PYG{p}{(}\PYG{n}{Nv}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{  }\PYG{c}{\PYGZpc{} initial filtered output}
+\PYG{n}{ucf}\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{randn}\PYG{p}{(}\PYG{n}{Nv}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{  }\PYG{c}{\PYGZpc{} initial filtered command signal}
+\PYG{n}{N}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{numel}\PYG{p}{(}\PYG{n}{t}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{k}{for}\PYG{+w}{ }\PYG{n+nb}{i}\PYG{+w}{ }\PYG{p}{=}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{Nv}
+\PYG{+w}{	}\PYG{n}{tetas}\PYG{p}{(}\PYG{p}{:}\PYG{p}{,}\PYG{n+nb}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{teta}\PYG{p}{;}
+\PYG{k}{end}
+\end{MintedVerbatim}

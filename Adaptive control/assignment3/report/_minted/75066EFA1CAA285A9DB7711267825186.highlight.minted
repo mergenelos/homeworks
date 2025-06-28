@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{run}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}SSTR\PYGZus{}0.m\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{} Diophantine equation}
+\PYG{p}{[}\PYG{n}{F}\PYG{p}{,}\PYG{n}{G}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{diophantine}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{C}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{} Open loop system}
+\PYG{n}{G\PYGZus{}ol}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{minreal}\PYG{p}{(}\PYG{n}{G\PYGZus{}discrete}\PYG{o}{*}\PYG{n}{tf}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n+nb}{conv}\PYG{p}{(}\PYG{n}{B}\PYG{p}{,}\PYG{n}{F}\PYG{p}{),}\PYG{n}{Ts}\PYG{p}{));}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{} Closed loop system}
+\PYG{n}{G\PYGZus{}cl}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{feedback}\PYG{p}{(}\PYG{n}{G\PYGZus{}ol}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}
+\end{MintedVerbatim}

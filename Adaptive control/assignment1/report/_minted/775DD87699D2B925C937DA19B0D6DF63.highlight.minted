@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{for}\PYG{+w}{ }\PYG{n+nb}{i}\PYG{p}{=}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{N}
+\PYG{n}{theta\PYGZus{}hat}\PYG{p}{(}\PYG{p}{:}\PYG{p}{,}\PYG{n+nb}{i}\PYG{p}{)}\PYG{p}{=}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.79}\PYG{p}{;}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.41}\PYG{p}{;}\PYG{l+m+mf}{0.23}\PYG{p}{;}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.0009}\PYG{p}{;}\PYG{l+m+mf}{0.042}\PYG{p}{;}\PYG{l+m+mf}{0.022}\PYG{p}{]}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{}Better Theta}
+\PYG{c}{\PYGZpc{}theta\PYGZus{}hat(:,i)=[100;100;100;100;100;100]; \PYGZpc{}Worse Theta}
+\PYG{k}{end}
+\end{MintedVerbatim}

@@ -1,0 +1,50 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+
+\begin{problem}{Your title}{problem-label}
+	This is an example problem taken from \cite{Sakurai2020}:
+	
+	\begin{enumerate}[(a)]
+		\item Prove the following
+		\begin{enumerate}[label = (\roman*)]
+			\item $\langle p' | x | \alpha \rangle = \im \hbar \pdv{}{p'} \langle p' | \alpha \rangle$.
+			
+			\item $\langle \beta | x | \alpha \rangle = \int \dd{p'} \phi_{\beta}^{*} (p') \im \hbar \pdv{}{p'} \phi_{\alpha} (p'),$
+			
+			where $\phi_{\alpha}(p') = \langle p' | \alpha \rangle$ and $\phi_{\beta}(p') = \langle p' | \beta \rangle$ are momentum-space wave functions.
+		\end{enumerate}
+		
+		\item What is the physical significance of 
+		\[
+		\exp\left(\dfrac{\im x \Xi}{\hbar}\right),
+		\]
+		
+		where $x$ is the position operator and $\Xi$ is some number with the dimension of momentum? Justify your answer.
+	\end{enumerate}
+\end{problem}
+
+Notice that the partial derivative and integral are smaller when used in a sentence compared with when you're working in a math environment like \verb|\begin{equation} \end{equation}|. If you want to display the full size of such commands in a sentence, you must use the command \verb|\displaystyle{}|, like it's shown here:
+
+\begin{problem}{Your title}{problem-label-2}
+	This is an example problem taken from \cite{Sakurai2020}:
+	
+	\begin{enumerate}[(a)]
+		\item Prove the following
+		\begin{enumerate}[label = (\roman*)]
+			\item $\langle p' | x | \alpha \rangle = \im \hbar \displaystyle{\pdv{}{p'} }\langle p' | \alpha \rangle$.
+			
+			\item $\langle \beta | x | \alpha \rangle = \displaystyle{\int \dd{p'} \phi_{\beta}^{*} (p') \im \hbar \pdv{}{p'} \phi_{\alpha} (p')}$, 
+			
+			\vspace{1ex}
+			
+			where $\phi_{\alpha}(p') = \langle p' | \alpha \rangle$ and $\phi_{\beta}(p') = \langle p' | \beta \rangle$ are momentum-space wave functions.
+		\end{enumerate}
+		
+		\item $\cdots$
+	\end{enumerate}
+\end{problem}
+
+
+%\matlabinline /myVar = [0 1 2];%new file/

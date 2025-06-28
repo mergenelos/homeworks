@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{}teta = zeros(Nv , 1) ;}
+\PYG{c}{\PYGZpc{}teta(:,1) = [0.104;\PYGZhy{}0.0431;0.008;0.442;\PYGZhy{}0.167;\PYGZhy{}0.194;\PYGZhy{}0.050;0.086;0.0272];}
+\PYG{n}{teta}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{o}{*}\PYG{n+nb}{randn}\PYG{p}{(}\PYG{n}{Nv}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+
+\PYG{n}{P}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1e6}\PYG{o}{*}\PYG{n+nb}{eye}\PYG{p}{(}\PYG{n}{Nv}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{c}{\PYGZpc{}P = 1e2*eye(Nv) ;}
+\PYG{c}{\PYGZpc{}P = 1e12*eye(Nv) ;}
+\end{MintedVerbatim}
