@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Awesome subsection}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Some nice subsection}{5}{0}{1}
+\beamer@sectionintoc {2}{Another Section}{6}{0}{2}

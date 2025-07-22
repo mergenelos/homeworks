@@ -1,1 +1,1 @@
-# homeworks
+# An implementation of "Finite-Time Stabilization-Based Adaptive Fuzzy Control Design" paper using python

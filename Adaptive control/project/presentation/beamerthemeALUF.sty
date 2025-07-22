@@ -1,0 +1,115 @@
+% Modified from the Gelugor (Universiti Sains Malaysia) presentation theme for beamer by LIM Lian Tze <liantze@gmail.com>
+% https://github.com/liantze/beamer-gelugor
+% http://tex.my/gelugor-a-usm-beamer-theme/
+\ProvidesPackage{beamerthemeALUF}[2014/03/26]
+
+\definecolor{ALUFred}{RGB}{185,0,36}
+\definecolor{ALUFblue}{RGB}{8,63,146}
+\definecolor{ALUFwhite}{RGB}{255,255,255}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Outer theme
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[width=.15\paperwidth]{sidebar}
+\setlength{\beamer@headheight}{.15\paperheight}
+\pgfdeclareimage[width=.13\paperwidth]{small-logo}{unilogo}
+\pgfdeclareimage[width=.25\paperwidth]{main-logo}{unilogo}
+
+\setbeamertemplate{sidebar left}{%
+\vskip12pt
+\insertverticalnavigation{\beamer@sidebarwidth}%
+}
+
+\setbeamerfont{section in sidebar}{size=\fontsize{8}{8}\selectfont}
+\setbeamerfont{subsection in sidebar}{size=\fontsize{6}{8}\selectfont}
+
+
+\setbeamertemplate{footline}[text line]{%
+	\fontsize{12pt}{50}\selectfont
+\strut\hfill\hfill\hspace{2em}\insertframenumber/\inserttotalframenumber}
+%\insertshorttitle
+\addtobeamertemplate{frametitle}{}{%
+\begin{pgfpicture}
+    \pgf@relevantforpicturesizefalse
+    \pgftransformxshift{-\Gm@lmargin}
+    \pgftransformyshift{\beamer@headheight+18pt}
+    \pgfpathmoveto{\pgfpoint{.15\paperwidth}{0pt}}
+    \pgfpathlineto{\pgfpoint{.15\paperwidth}{-\beamer@headheight}}
+    \pgfsetlinewidth{3.5pt}
+    \pgfsetinnerlinewidth{1pt}
+    \pgfsetinnerstrokecolor{ALUFblue}
+    \pgfsetcolor{white}
+    \pgfusepath{stroke}
+    \pgfpathmoveto{\pgfpoint{.15\paperwidth}{\paperheight}}
+    \pgfpathlineto{\pgfpoint{.15\paperwidth}{-.99\paperheight}}
+    \pgfsetlinewidth{0.5pt}
+    \pgfsetinnerlinewidth{0pt}
+    \pgfsetcolor{ALUFblue}
+    \pgfusepath{stroke}
+    \pgftext[at=\pgfpoint{.075\paperwidth}{-.97\paperheight},center,base]{\pgfuseimage{small-logo}}
+\end{pgfpicture}%
+\vskip-25pt%
+}
+
+\addtobeamertemplate{title page}{%
+\usebeamertemplate{title background}%
+\vskip.2\paperheight%
+}
+{}
+
+\newcommand\MakeBlueBackgroud{%
+    \pgfpathmoveto{\pgfpointorigin}
+    \pgfpathrectanglecorners{\pgfpoint{0pt}{0pt}}{\pgfpoint{\paperwidth}{-\paperheight}}
+    \pgfsetfillcolor{ALUFblue}
+    \pgfusepath{fill}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Title Page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{title background}{%
+\begin{pgfpicture}
+    \pgf@relevantforpicturesizefalse
+    \pgftransformxshift{-\Gm@lmargin}
+    \pgftransformyshift{5.5pt}
+    \pgfusepath{fill}
+    %\MakeBlueBackgroud
+
+    % Logo
+    \pgftext[at=\pgfpoint{.009\paperwidth}{-.60\paperheight},left,base]{\pgfuseimage{main-logo}}
+
+\end{pgfpicture}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inner Theme
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useinnertheme{rectangles}
+\setbeamertemplate{navigation symbols}{}
+
+\setlength{\leftmargini}{.5em}
+\setlength{\leftmarginii}{1.0em}
+\setlength{\leftmarginiii}{1.5em}
+\setlength{\leftmarginiv}{2.0em}
+\setlength{\leftmarginv}{2.5em}
+\setlength{\leftmarginvi}{3.0em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colours
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usecolortheme[named=ALUFred]{structure}
+\usecolortheme{orchid}
+\setbeamercolor{title page}{fg=ALUFblue, bg=ALUFwhite}
+\setbeamercolor{logo}{bg=ALUFblue}
+\setbeamercolor{frametitle}{fg=ALUFwhite,bg=ALUFblue}
+\setbeamercolor{section in sidebar}{fg=ALUFred}
+\setbeamerfont{section in sidebar}{series=\bfseries}
+\setbeamercolor{block title}{bg=ALUFblue!28!white,fg=ALUFblue}
+\setbeamercolor{block body}{bg=ALUFred!15!white}
+
+\newcommand\ThankYouFrame{
+    \begin{frame}[plain]
+        	\textcolor{ALUFblue}{\fontsize{40}{50}\selectfont Thank you.\\Any questions?}
+    \end{frame}
+}
