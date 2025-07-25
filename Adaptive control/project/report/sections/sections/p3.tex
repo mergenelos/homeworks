@@ -1,0 +1,150 @@
+\FloatBarrier
+\section{The Python Implementation}
+While the theoretical guarantees are essential, the true test of a control strategy lies in its implementation and simulation. The concepts from Chen and Lin's paper were successfully translated into a Python script, leveraging the SciPy library for numerical integration and Matplotlib for visualization. The implementation can be broken down into several key sections, each corresponding to a piece of the theoretical puzzle.
+
+\subsection{Parameter and System Setup}
+This initial section of the code is foundational. It defines all the constants and initial values required for the simulation. These parameters, such as controller gains ($k_{11}$, $k_{12}$), adaptive law parameters ($r1$, $\sigma_{11}$), and quantizer settings ($v_{min}$), are taken directly from the paper's simulation section. This step is crucial for ensuring the simulation reproduces the conditions described by the authors.
+
+\begin{code}
+	\begin{matlabcode}{firstnumber = 1}
+k11 = 10.0
+k12 = 7.5
+k21 = 5.0
+k22 = 1.0
+a1 = 1.5
+a2 = 1.5
+r1 = 10.0
+r2 = 10.0
+sigma11 = 0.05
+# ... and so on
+
+# Quantizer parameters
+v_min = 0.1
+delta = 0.1
+
+# Simulation parameters
+t_span = [0, 30]
+# Initial conditions for states z1, z2 and adaptive parameters theta1, theta2
+initial_conditions = [0.5, 0.5, 0.0, 0.0]
+	\end{matlabcode}
+	\captionof{listing}{Parameter and System Setup}
+	\label{code:p31}
+\end{code}
+
+\subsection{The Hysteretic Quantizer Class}
+In digital control systems, the control signal is not continuous but exists at discrete levels. The paper uses a hysteretic quantizer to model this, and the code implements it as a Python class. A class is used because the quantizer's output depends on its previous state (both its previous input and output values) to provide "hysteresis," which prevents rapid, damaging switching (chattering).
+
+The quantize method contains the core logic from equation (6) in the paper, determining the correct discrete output level based on the continuous input value v.
+
+\begin{code}
+	\begin{matlabcode}{firstnumber = 1}
+class HystereticQuantizer:
+def __init__(self, v_min, delta, rho):
+# Store parameters and initialize previous state variables
+self.v_min = v_min
+self.delta = delta
+self.rho = rho
+self.q_prev = 0
+self.v_prev = 0
+
+def quantize(self, v):
+self.q_prev = q_current
+self.v_prev = v
+return q_current
+
+quantizer = HystereticQuantizer(v_min, delta, rho)
+	\end{matlabcode}
+	\captionof{listing}{The Hysteretic Quantizer Class}
+	\label{code:p32}
+\end{code}
+
+\subsection{The Core System Model Function}
+This function is the heart of the simulation. It defines the complete set of ordinary differential equations that describe the behavior of the entire system—the plant, the controllers, and the adaptive laws. This function is passed to the $scipy.integrate.solve\_ivp$ numerical solver.
+
+The logic inside this function follows the backstepping design procedure from the paper, step-by-step.
+
+\subsubsection{Error Calculation}
+First, the tracking error eta1 is calculated. This is the difference between the system's actual output ($z_1$) and the desired reference signal ($y_r$).
+\begin{code}
+	\begin{matlabcode}{firstnumber = 1}
+def system_model(t, y):
+z1, z2, theta1, theta2 = y
+
+# Reference signal and its derivative
+y_r = np.sin(t)
+
+# Error coordinate eta1
+eta1 = z1 - y_r
+	\end{matlabcode}
+	\captionof{listing}{The Core System Model Function}
+	\label{code:p33}
+\end{code}
+\subsubsection{Step 1: Virtual Controller and Adaptive Law}
+Next, a "virtual controller" alpha1 is designed. It's not a real control signal but a mathematical function designed to stabilize the $\eta_1$ error. Its value represents the desired behavior for the next state, $z_2$. At the same time, the adaptive law for the first fuzzy system is calculated to update the fuzzy logic parameters.
+\begin{code}
+	\begin{matlabcode}{firstnumber = 1}
+# Calculate the Fuzzy Logic System (FLS) output
+X1 = np.array([z1]) 
+S1 = gaussian_basis(X1, fls1_centers, fls1_width)
+S1_T_S1 = S1.T @ S1
+
+# Virtual controller alpha1 
+alpha1 = -(k11 + 0.5) * eta1 - k12 * power(eta1, 2 * h - 1) \
+- (eta1 / (2 * a1**2)) * theta1 * S1_T_S1
+
+# Adaptive law for theta1 
+theta1_dot = (r1 / (2 * a1**2)) * eta1**2 * S1_T_S1 \
+- sigma11 * theta1 - sigma12 * power(theta1, 2 * h - 1)
+	\end{matlabcode}
+	\captionof{listing}{Virtual Controller and Adaptive Law}
+	\label{code:p34}
+\end{code}
+\subsubsection{Step 2: Actual Controller and Adaptive Law}
+Using the virtual controller alpha1, the final error term $\eta_2$ is calculated. The actual pre-quantized control signal $v$ is then computed to stabilize $\eta_2$. This signal is passed to the HystereticQuantizer to get the final, real-world control input $u$. The adaptive law for the second fuzzy system is also computed here.
+\begin{code}
+	\begin{matlabcode}{firstnumber = 1}
+eta2 = z2 - alpha1
+
+# Pre-quantized control input 'v'
+v_control_term = (k21 + 0.5) * eta2 + k22 * power(eta2, 2 * h - 1) + \
+(eta2 * theta2 / (2 * a2**2)) * S2_T_S2
+v = (-1 / (1 - delta)) * v_control_term - v_min * np.sign(eta2)
+
+# Quantized control input 'u'
+u = quantizer.quantize(v)
+
+# Adaptive law for theta2
+theta2_dot = (r2 / (2 * a2**2)) * eta2**2 * S2_T_S2 \
+- sigma21 * theta2 - sigma22 * power(theta2, 2 * h - 1)
+	\end{matlabcode}
+	\captionof{listing}{Actual Controller and Adaptive Law}
+	\label{code:p35}
+\end{code}
+\subsubsection{Plant Dynamics and Return Values}
+Finally, the function uses the calculated control input u to compute the derivatives of the plant's states according to the system's equations of motion. It returns a list of all the derivatives, which the ODE solver uses to calculate the system's state at the next time step.
+\begin{code}
+	\begin{matlabcode}{firstnumber = 1}
+# Plant dynamics from the paper
+z1_dot = 0.5 * z1**3 + (1 + np.sin(z1)**2) * z2
+z2_dot = z2**2 * np.cos(z1) * np.sin(z2) + 2 * u
+
+return [z1_dot, z2_dot, theta1_dot, theta2_dot]
+	\end{matlabcode}
+	\captionof{listing}{Plant Dynamics and Return Values}
+	\label{code:p36}
+\end{code}
+
+\subsection{Solving the System and Plotting}
+This final section of the script calls the $solve\_ivp$ function, which performs the numerical integration to find the solution of the ODE system over the specified time span. The results are then unpacked and plotted using Matplotlib to generate the figures that visually confirm the controller's performance, matching the results shown in the paper.
+\begin{code}
+	\begin{matlabcode}{firstnumber = 1}
+solution = solve_ivp(system_model, t_span, initial_conditions, t_eval=t_eval, method='RK45')
+
+plt.figure(figsize=(8, 6))
+plt.plot(t_eval, z1_sol, 'r-', label='y (System Output)')
+# ... (plotting code for all figures) ...
+plt.show()
+	\end{matlabcode}
+	\captionof{listing}{Solving the System and Plotting}
+	\label{code:p37}
+\end{code}

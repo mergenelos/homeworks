@@ -1,0 +1,15 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{eta2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{z2}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{alpha1}
+
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Pre}\PYG{o}{\PYGZhy{}}\PYG{n}{quantized}\PYG{+w}{ }\PYG{n}{control}\PYG{+w}{ }\PYG{n+nb}{input}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{v\PYGZsq{}}
+\PYG{n}{v\PYGZus{}control\PYGZus{}term}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{k21}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{eta2}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{k22}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{power}\PYG{p}{(}\PYG{n}{eta2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{h}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{o}{\PYGZbs{}}
+\PYG{p}{(}\PYG{n}{eta2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{theta2}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{a2}\PYG{o}{*}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{S2\PYGZus{}T\PYGZus{}S2}
+\PYG{n}{v}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{delta}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{v\PYGZus{}control\PYGZus{}term}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{v\PYGZus{}min}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{np}\PYG{p}{.}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{eta2}\PYG{p}{)}
+
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Quantized}\PYG{+w}{ }\PYG{n}{control}\PYG{+w}{ }\PYG{n+nb}{input}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{u\PYGZsq{}}
+\PYG{n}{u}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{quantizer}\PYG{p}{.}\PYG{n}{quantize}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Adaptive}\PYG{+w}{ }\PYG{n}{law}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{theta2}
+\PYG{n}{theta2\PYGZus{}dot}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{r2}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{a2}\PYG{o}{*}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{eta2}\PYG{o}{*}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{S2\PYGZus{}T\PYGZus{}S2}\PYG{+w}{ }\PYG{o}{\PYGZbs{}}
+\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{sigma21}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{theta2}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{sigma22}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{power}\PYG{p}{(}\PYG{n}{theta2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{h}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}
+\end{MintedVerbatim}

@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{solution}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{solve\PYGZus{}ivp}\PYG{p}{(}\PYG{n}{system\PYGZus{}model}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t\PYGZus{}span}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{initial\PYGZus{}conditions}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t\PYGZus{}eval}\PYG{p}{=}\PYG{n}{t\PYGZus{}eval}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{method}\PYG{p}{=}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{RK45\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n}{plt}\PYG{p}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{n}{figsize}\PYG{p}{=}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{)}
+\PYG{n}{plt}\PYG{p}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{t\PYGZus{}eval}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{z1\PYGZus{}sol}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{r\PYGZhy{}\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{label}\PYG{p}{=}\PYG{l+s}{\PYGZsq{}}\PYG{l+s}{y (System Output)\PYGZsq{}}\PYG{p}{)}
+\PYGZsh{}\PYG{+w}{ }\PYG{k}{...}\PYG{c}{ (plotting code for all figures) ...}
+\PYG{n}{plt}\PYG{p}{.}\PYG{n}{show}\PYG{p}{(}\PYG{p}{)}
+\end{MintedVerbatim}

@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Plant}\PYG{+w}{ }\PYG{n}{dynamics}\PYG{+w}{ }\PYG{n}{from}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{n}{paper}
+\PYG{n}{z1\PYGZus{}dot}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{z1}\PYG{o}{*}\PYG{o}{*}\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{np}\PYG{p}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{z1}\PYG{p}{)}\PYG{o}{*}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{z2}
+\PYG{n}{z2\PYGZus{}dot}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{z2}\PYG{o}{*}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{np}\PYG{p}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{z1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{np}\PYG{p}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{z2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{u}
+
+\PYG{k}{return}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{z1\PYGZus{}dot}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{z2\PYGZus{}dot}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{theta1\PYGZus{}dot}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{theta2\PYGZus{}dot}\PYG{p}{]}
+\end{MintedVerbatim}

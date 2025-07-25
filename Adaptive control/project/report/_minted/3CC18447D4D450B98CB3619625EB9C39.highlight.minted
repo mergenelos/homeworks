@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{class}\PYG{+w}{ }\PYG{n}{HystereticQuantizer}\PYG{p}{:}
+\PYG{n}{def}\PYG{+w}{ }\PYG{l+s}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}(self,}\PYG{+w}{ }\PYG{l+s}{v\PYGZus{}min,}\PYG{+w}{ }\PYG{l+s}{delta,}\PYG{+w}{ }\PYG{l+s}{rho):}
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Store}\PYG{+w}{ }\PYG{n}{parameters}\PYG{+w}{ }\PYG{n}{and}\PYG{+w}{ }\PYG{n}{initialize}\PYG{+w}{ }\PYG{n}{previous}\PYG{+w}{ }\PYG{n}{state}\PYG{+w}{ }\PYG{n}{variables}
+\PYG{n}{self}\PYG{p}{.}\PYG{n}{v\PYGZus{}min}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{v\PYGZus{}min}
+\PYG{n}{self}\PYG{p}{.}\PYG{n}{delta}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{delta}
+\PYG{n}{self}\PYG{p}{.}\PYG{n}{rho}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{rho}
+\PYG{n}{self}\PYG{p}{.}\PYG{n}{q\PYGZus{}prev}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}
+\PYG{n}{self}\PYG{p}{.}\PYG{n}{v\PYGZus{}prev}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}
+
+\PYG{n}{def}\PYG{+w}{ }\PYG{l+s}{quantize(self,}\PYG{+w}{ }\PYG{l+s}{v):}
+\PYG{n}{self}\PYG{p}{.}\PYG{n}{q\PYGZus{}prev}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{q\PYGZus{}current}
+\PYG{n}{self}\PYG{p}{.}\PYG{n}{v\PYGZus{}prev}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{v}
+\PYG{k}{return}\PYG{+w}{ }\PYG{n}{q\PYGZus{}current}
+
+\PYG{n}{quantizer}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{HystereticQuantizer}\PYG{p}{(}\PYG{n}{v\PYGZus{}min}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{delta}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rho}\PYG{p}{)}
+\end{MintedVerbatim}

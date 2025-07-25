@@ -1,0 +1,14 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Calculate}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{n}{Fuzzy}\PYG{+w}{ }\PYG{n}{Logic}\PYG{+w}{ }\PYG{n}{System}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{FLS}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{output}
+\PYG{n}{X1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{np}\PYG{p}{.}\PYG{n}{array}\PYG{p}{(}\PYG{p}{[}\PYG{n}{z1}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{S1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{gaussian\PYGZus{}basis}\PYG{p}{(}\PYG{n}{X1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{fls1\PYGZus{}centers}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{fls1\PYGZus{}width}\PYG{p}{)}
+\PYG{n}{S1\PYGZus{}T\PYGZus{}S1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{S1}\PYG{p}{.}\PYG{n}{T}\PYG{+w}{ }\PYG{p}{@}\PYG{+w}{ }\PYG{n}{S1}
+
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Virtual}\PYG{+w}{ }\PYG{n}{controller}\PYG{+w}{ }\PYG{n}{alpha1}
+\PYG{n}{alpha1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{k11}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{eta1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{k12}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{power}\PYG{p}{(}\PYG{n}{eta1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{h}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZbs{}}
+\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{eta1}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{a1}\PYG{o}{*}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{theta1}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{S1\PYGZus{}T\PYGZus{}S1}
+
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Adaptive}\PYG{+w}{ }\PYG{n}{law}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{theta1}
+\PYG{n}{theta1\PYGZus{}dot}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{r1}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{a1}\PYG{o}{*}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{eta1}\PYG{o}{*}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{S1\PYGZus{}T\PYGZus{}S1}\PYG{+w}{ }\PYG{o}{\PYGZbs{}}
+\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{sigma11}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{theta1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{sigma12}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{power}\PYG{p}{(}\PYG{n}{theta1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{h}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}
+\end{MintedVerbatim}

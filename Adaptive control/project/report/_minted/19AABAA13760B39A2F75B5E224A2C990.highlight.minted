@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{def}\PYG{+w}{ }\PYG{l+s}{system\PYGZus{}model(t,}\PYG{+w}{ }\PYG{l+s}{y):}
+\PYG{n}{z1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{z2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{theta1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{theta2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{y}
+
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Reference}\PYG{+w}{ }\PYG{n}{signal}\PYG{+w}{ }\PYG{n}{and}\PYG{+w}{ }\PYG{n}{its}\PYG{+w}{ }\PYG{n}{derivative}
+\PYG{n}{y\PYGZus{}r}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{np}\PYG{p}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{t}\PYG{p}{)}
+
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Error}\PYG{+w}{ }\PYG{n}{coordinate}\PYG{+w}{ }\PYG{n}{eta1}
+\PYG{n}{eta1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{z1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{y\PYGZus{}r}
+\end{MintedVerbatim}

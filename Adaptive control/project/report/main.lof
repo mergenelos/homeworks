@@ -1,19 +1,5 @@
 \babel@toc {english}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Original system step response}}{2}{figure.caption.2}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Discrete stable system step response}}{2}{figure.caption.3}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Output and control of minimum variance controller}}{4}{figure.caption.5}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Cummulative loss of Minimum variance controller}}{5}{figure.caption.6}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Minimum variance controller with delay, output and control}}{7}{figure.caption.8}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Minimum variance controller with delay, cummulative loss}}{8}{figure.caption.9}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Output and control of indirect adaptive implementation of minimum variance controller}}{10}{figure.caption.11}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Cummulative loss of indirect adaptive implementation of minimum variance controller}}{11}{figure.caption.12}%
-\contentsline {figure}{\numberline {9}{\ignorespaces output and control of direct adaptive implementation of minimum variance controller}}{13}{figure.caption.14}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Cummulative loss of direct adaptive implementation of minimum variance controller}}{14}{figure.caption.15}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Estimated parameters of direct adaptive implementation of minimum variance controller}}{14}{figure.caption.16}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Output and control of moving average controller}}{16}{figure.caption.18}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Cummulative loss of moving average controller}}{17}{figure.caption.19}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Output and control of moving average controller with mirrored zeros}}{19}{figure.caption.21}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Cummulative loss of moving average controller with mirrored zeros}}{20}{figure.caption.22}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Output and control of direct adaptive implementation of moving average controller with mirrored zeros}}{22}{figure.caption.24}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Cummulative loss of direct adaptive implementation of moving average controller}}{23}{figure.caption.25}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Estimated parameters of direct adaptive implementation of moving average controller}}{23}{figure.caption.26}%
+\contentsline {figure}{\numberline {1}{\ignorespaces System Output vs. Reference Signal}}{6}{figure.caption.8}%
+\contentsline {figure}{\numberline {2}{\ignorespaces State Variable $z_2$}}{7}{figure.caption.9}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Adaptive Parameters}}{8}{figure.caption.10}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Quantizer Output}}{9}{figure.caption.11}%

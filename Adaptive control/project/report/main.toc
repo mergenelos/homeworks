@@ -1,11 +1,20 @@
 \babel@toc {english}{}\relax 
 \contentsline {section}{List of Figures}{ii}{Doc-Start}%
 \contentsline {section}{List of Program Codes}{iii}{Doc-Start}%
-\contentsline {section}{\numberline {1}Questions 1 to 7}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Question 1}{3}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Question 2}{6}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Question 3}{9}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Question 4}{12}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Question 5}{15}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Question 6}{17}{subsection.1.6}%
-\contentsline {subsection}{\numberline {1.7}Question 7}{21}{subsection.1.7}%
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {2}The Theoretical Framework}{1}{section.2}%
+\contentsline {section}{\numberline {3}The Python Implementation}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Parameter and System Setup}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The Hysteretic Quantizer Class}{3}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}The Core System Model Function}{3}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Error Calculation}{3}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Step 1: Virtual Controller and Adaptive Law}{4}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Step 2: Actual Controller and Adaptive Law}{4}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Plant Dynamics and Return Values}{5}{subsubsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.4}Solving the System and Plotting}{5}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Results}{6}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Figure 1: System Output vs. Reference Signal}{6}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Figure 2: State Variable $z_2$}{7}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}Figure 3: Adaptive Parameters}{8}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}Figure 4: Quantizer Output}{9}{subsubsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.6}Conclusion}{9}{subsection.3.6}%

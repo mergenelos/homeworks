@@ -1,0 +1,21 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{k11}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{10.0}
+\PYG{n}{k12}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{7.5}
+\PYG{n}{k21}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{5.0}
+\PYG{n}{k22}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.0}
+\PYG{n}{a1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.5}
+\PYG{n}{a2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.5}
+\PYG{n}{r1}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{10.0}
+\PYG{n}{r2}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{10.0}
+\PYG{n}{sigma11}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.05}
+\PYGZsh{}\PYG{+w}{ }\PYG{k}{...}\PYG{c}{ and so on}
+
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Quantizer}\PYG{+w}{ }\PYG{n}{parameters}
+\PYG{n}{v\PYGZus{}min}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}
+\PYG{n}{delta}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}
+
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Simulation}\PYG{+w}{ }\PYG{n}{parameters}
+\PYG{n}{t\PYGZus{}span}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{30}\PYG{p}{]}
+\PYGZsh{}\PYG{+w}{ }\PYG{n}{Initial}\PYG{+w}{ }\PYG{n}{conditions}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{states}\PYG{+w}{ }\PYG{n}{z1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{z2}\PYG{+w}{ }\PYG{n}{and}\PYG{+w}{ }\PYG{n}{adaptive}\PYG{+w}{ }\PYG{n}{parameters}\PYG{+w}{ }\PYG{n}{theta1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{theta2}
+\PYG{n}{initial\PYGZus{}conditions}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0}\PYG{p}{]}
+\end{MintedVerbatim}
